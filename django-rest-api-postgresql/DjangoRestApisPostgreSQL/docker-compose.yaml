@@ -1,0 +1,21 @@
+version: "3.5"
+
+services:
+  django-postgres:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+
+  db-postgres:
+    image: postgres
+    environment:
+      - POSTGRES_PASSWORD=admin
+    ports:
+      - 5432:5432
+    volumes:
+      - /home/maicol/Documentos/practices/examples_infotech/django-rest-api-postgresql/volumes:/var/lib/postgresql/data

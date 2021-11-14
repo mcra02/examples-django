@@ -1,0 +1,20 @@
+version: "3.5"
+
+services:
+  django-mongodb:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file: .env
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/app
+
+  db-mongo:
+    image: mongo
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=mongoadmin
+      - MONGO_INITDB_ROOT_PASSWORD=admin
+    ports:
+      - 27017:27017
